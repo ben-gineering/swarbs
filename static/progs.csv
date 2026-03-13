@@ -1,4 +1,5 @@
 #TAG,NAME IN REPO (or git url),PURPOSE (should be a verb phrase to sound right while installing)
+,ly,"is a lightweight TUI display manager."
 ,sway,"is the Wayland compositor (window manager)."
 ,swaybg,"sets wallpapers for Wayland."
 ,swaylock,"locks the screen securely."
