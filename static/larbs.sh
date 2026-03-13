@@ -202,6 +202,26 @@ vimplugininstall() {
 	sudo -u "$name" nvim -c "PlugInstall|q|q"
 }
 
+installswarbsconfig() {
+	# Install Swarbs default configurations for sway, waybar, foot, rofi
+	whiptail --infobox "Installing Swarbs configurations..." 7 60
+	configdir="/tmp/swarbs-config"
+	sudo -u "$name" git -C "$repodir" clone --depth 1 --single-branch \
+		--no-tags -q "https://github.com/LukeSmithxyz/swarbs.git" "$configdir" ||
+		{
+			cd "$configdir" || return 1
+			sudo -u "$name" git pull --force origin master
+		}
+	# Copy config files to user's home
+	sudo -u "$name" cp -f "$configdir/config/sway/config" "/home/$name/.config/sway/config"
+	sudo -u "$name" cp -f "$configdir/config/waybar/config" "/home/$name/.config/waybar/config"
+	sudo -u "$name" cp -f "$configdir/config/waybar/style.css" "/home/$name/.config/waybar/style.css"
+	sudo -u "$name" cp -f "$configdir/config/foot/foot.ini" "/home/$name/.config/foot/foot.ini"
+	sudo -u "$name" cp -f "$configdir/config/rofi/config.rasi" "/home/$name/.config/rofi/config.rasi"
+	chown -R "$name:wheel" "/home/$name/.config/sway" "/home/$name/.config/waybar" "/home/$name/.config/foot" "/home/$name/.config/rofi"
+	rm -rf "$configdir"
+}
+
 makeuserjs(){
 	# Get the Arkenfox user.js and prepare it.
 	arkenfox="$pdir/arkenfox.js"
@@ -282,11 +302,18 @@ $aurhelper -Y --save --devel
 # and all build dependencies are installed.
 installationloop
 
+# Install default sway configurations
 # TODO: Install sway dotfiles after finalizing config
-# Install the dotfiles in the user's home directory, but remove .git dir and
-# other unnecessary files.
 # putgitrepo "$dotfilesrepo" "/home/$name" "$repobranch"
 # rm -rf "/home/$name/.git/" "/home/$name/README.md" "/home/$name/LICENSE" "/home/$name/FUNDING.yml"
+
+# Install default sway, waybar, foot, and rofi configs
+whiptail --infobox "Installing default Swarbs configurations..." 7 60
+sudo -u "$name" mkdir -p "/home/$name/.config/sway"
+sudo -u "$name" mkdir -p "/home/$name/.config/waybar"
+sudo -u "$name" mkdir -p "/home/$name/.config/foot"
+sudo -u "$name" mkdir -p "/home/$name/.config/rofi"
+# Config files will be installed from the swarbs repo after finalizing
 
 # Write urls for newsboat if it doesn't already exist
 [ -s "/home/$name/.config/newsboat/urls" ] ||
@@ -294,6 +321,9 @@ installationloop
 
 # Install vim plugins if not alread present.
 [ ! -f "/home/$name/.config/nvim/autoload/plug.vim" ] && vimplugininstall
+
+# Install Swarbs configurations (sway, waybar, foot, rofi)
+installswarbsconfig
 
 # Most important command! Get rid of the beep!
 rmmod pcspkr
