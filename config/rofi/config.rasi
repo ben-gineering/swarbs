@@ -1,0 +1,139 @@
+/* Rofi configuration for Swarbs */
+
+/* Colors - Gruvbox theme */
+* {
+    bg-col:    #1a1b26;
+    bg-col2:   #2f334d;
+    fg-col:    #a9b1d6;
+    fg-col2:   #7aa2f7;
+    hl-col:    #e0af68;
+    ac-col:    #7aa2f7;
+    ac-col2:   #1a1b26;
+    urg-col:   #f7768e;
+}
+
+configuration {
+    modi: "drun,run,window";
+    show-icons: true;
+    icon-theme: "Adwaita";
+    drun-display-format: "{name}";
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: "Apps";
+    display-run: "Run";
+    display-window: "Window";
+    sidebar-mode: true;
+    terminal: "foot";
+}
+
+/* Window */
+window {
+    height: 600px;
+    width: 800px;
+    location: center;
+    anchor: center;
+    border: 2px solid;
+    border-color: @fg-col2;
+    background-color: @bg-col;
+    cursor: default;
+}
+
+/* Message */
+message {
+    background-color: @bg-col2;
+    border: 0px solid;
+    border-color: @fg-col;
+    border-radius: 0px;
+}
+
+message textarea {
+    background-color: @bg-col2;
+    text-color: @fg-col;
+}
+
+/* Textbox */
+textbox {
+    background-color: @bg-col;
+    text-color: @fg-col;
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+}
+
+/* Prompt textbox */
+textbox-prompt-colon {
+    expand: false;
+    str: ":";
+}
+
+/* List */
+listview {
+    border: 0px 0px 0px 0px;
+    padding: 2px 0px 0px 0px;
+    columns: 1;
+    lines: 8;
+    background-color: @bg-col;
+    fixed-height: true;
+    cursor: pointer;
+}
+
+/* Row */
+row {
+    padding: 10px;
+    spacing: 10px;
+    background-color: @bg-col;
+    cursor: pointer;
+}
+
+row:selected {
+    background-color: @bg-col2;
+}
+
+row:active {
+    background-color: @fg-col2;
+}
+
+row:urgent {
+    background-color: @urg-col;
+}
+
+/* Icon */
+iconview {
+    padding: 4px;
+}
+
+iconview selected {
+    background-color: @bg-col2;
+}
+
+/* Input textbox */
+entry {
+    padding: 10px;
+    spacing: 10px;
+    background-color: @bg-col;
+    text-color: @fg-col;
+    cursor: text;
+    placeholder-color: @fg-col;
+    placeholder: "Search...";
+}
+
+entry selected {
+    background-color: @bg-col2;
+    text-color: @fg-col;
+}
+
+/* Completion */
+completion {
+    background: @bg-col;
+    text-color: @fg-col;
+}
+
+completion match {
+    text-color: @fg-col2;
+}
+
+/* Error */
+error-message {
+    padding: 12px;
+    background-color: @urg-col;
+    text-color: @fg-col;
+}
