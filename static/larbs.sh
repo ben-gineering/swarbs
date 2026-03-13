@@ -6,7 +6,8 @@
 
 ### OPTIONS AND VARIABLES ###
 
-dotfilesrepo="https://github.com/lukesmithxyz/voidrice.git"
+# TODO: Add sway-compatible dotfiles repo
+# dotfilesrepo="https://github.com/lukesmithxyz/voidrice.git"
 progsfile="https://raw.githubusercontent.com/LukeSmithxyz/LARBS/master/static/progs.csv"
 aurhelper="yay"
 repobranch="master"
@@ -214,7 +215,7 @@ makeuserjs(){
 
 finalize() {
 	whiptail --title "All done!" \
-		--msgbox "Congrats! Provided there were no hidden errors, the script completed successfully and all the programs and configuration files should be in place.\\n\\nTo run the new graphical environment, log out and log back in as your new user, then run the command \"startx\" to start the graphical environment (it will start automatically in tty1).\\n\\n.t Luke" 13 80
+		--msgbox "Congrats! Provided there were no hidden errors, the script completed successfully and all the programs and configuration files should be in place.\\n\\nTo run the new graphical environment, enable the display manager with:\\n\\nsystemctl enable ly\\n\\nThen reboot or run 'systemctl start ly' to start the graphical environment.\\n\\n.t Luke" 13 80
 }
 
 ### THE ACTUAL SCRIPT ###
@@ -281,10 +282,11 @@ $aurhelper -Y --save --devel
 # and all build dependencies are installed.
 installationloop
 
+# TODO: Install sway dotfiles after finalizing config
 # Install the dotfiles in the user's home directory, but remove .git dir and
 # other unnecessary files.
-putgitrepo "$dotfilesrepo" "/home/$name" "$repobranch"
-rm -rf "/home/$name/.git/" "/home/$name/README.md" "/home/$name/LICENSE" "/home/$name/FUNDING.yml"
+# putgitrepo "$dotfilesrepo" "/home/$name" "$repobranch"
+# rm -rf "/home/$name/.git/" "/home/$name/README.md" "/home/$name/LICENSE" "/home/$name/FUNDING.yml"
 
 # Write urls for newsboat if it doesn't already exist
 [ -s "/home/$name/.config/newsboat/urls" ] ||
@@ -313,15 +315,13 @@ dbus-uuidgen >/var/lib/dbus/machine-id
 # Only do it when systemd is not present
 [ "$(readlink -f /sbin/init)" != "/usr/lib/systemd/systemd" ] && echo "export \$(dbus-launch)" >/etc/profile.d/dbus.sh
 
-# Enable tap to click
-[ ! -f /etc/X11/xorg.conf.d/40-libinput.conf ] && printf 'Section "InputClass"
-        Identifier "libinput touchpad catchall"
-        MatchIsTouchpad "on"
-        MatchDevicePath "/dev/input/event*"
-        Driver "libinput"
-	# Enable left mouse button by tapping
-	Option "Tapping" "on"
-EndSection' >/etc/X11/xorg.conf.d/40-libinput.conf
+# Enable ly display manager service (but don't start it yet)
+# User must enable it manually with: systemctl enable ly
+[ -f /etc/systemd/system/display-manager.service ] ||
+	ln -fs /usr/lib/systemd/system/ly.service /etc/systemd/system/display-manager.service 2>/dev/null
+
+# TODO: Configure sway input settings (touchpad, tapping, etc.)
+# X11 libinput config removed - sway handles input configuration separately
 
 # All this below to get Librewolf installed with add-ons and non-bad settings.
 
