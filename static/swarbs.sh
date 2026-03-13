@@ -8,7 +8,7 @@
 
 # TODO: Add sway-compatible dotfiles repo
 # dotfilesrepo="https://github.com/lukesmithxyz/voidrice.git"
-progsfile="https://raw.githubusercontent.com/LukeSmithxyz/LARBS/master/static/progs.csv"
+progsfile="https://gitlab.com/b.engineer/swarbs/-/raw/master/static/progs.csv"
 aurhelper="yay"
 repobranch="master"
 export TERM=ansi
