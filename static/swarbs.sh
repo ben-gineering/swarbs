@@ -219,7 +219,8 @@ installswarbsconfig() {
 	sudo -u "$name" cp -f "$configdir/config/foot/foot.ini" "/home/$name/.config/foot/foot.ini"
 	sudo -u "$name" cp -f "$configdir/config/rofi/config.rasi" "/home/$name/.config/rofi/config.rasi"
 	sudo -u "$name" cp -f "$configdir/config/swaylock/config" "/home/$name/.config/swaylock/config"
-	chown -R "$name:wheel" "/home/$name/.config/sway" "/home/$name/.config/waybar" "/home/$name/.config/foot" "/home/$name/.config/rofi" "/home/$name/.config/swaylock"
+	sudo -u "$name" cp -f "$configdir/config/firefox/swarbs.js" "/home/$name/.config/firefox/swarbs.js"
+	chown -R "$name:wheel" "/home/$name/.config/sway" "/home/$name/.config/waybar" "/home/$name/.config/foot" "/home/$name/.config/rofi" "/home/$name/.config/swaylock" "/home/$name/.config/firefox"
 	rm -rf "$configdir"
 }
 
