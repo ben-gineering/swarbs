@@ -202,8 +202,6 @@ vimplugininstall() {
 	sudo -u "$name" nvim -c "PlugInstall|q|q"
 }
 
-
-
 makeuserjs(){
 	# Get the Arkenfox user.js and prepare it.
 	arkenfox="$pdir/arkenfox.js"
