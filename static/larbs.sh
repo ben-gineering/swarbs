@@ -203,7 +203,7 @@ vimplugininstall() {
 }
 
 installswarbsconfig() {
-	# Install Swarbs default configurations for sway, waybar, foot, rofi
+	# Install Swarbs default configurations for sway, waybar, foot, rofi, swaylock
 	whiptail --infobox "Installing Swarbs configurations..." 7 60
 	configdir="/tmp/swarbs-config"
 	sudo -u "$name" git -C "$repodir" clone --depth 1 --single-branch \
@@ -218,7 +218,8 @@ installswarbsconfig() {
 	sudo -u "$name" cp -f "$configdir/config/waybar/style.css" "/home/$name/.config/waybar/style.css"
 	sudo -u "$name" cp -f "$configdir/config/foot/foot.ini" "/home/$name/.config/foot/foot.ini"
 	sudo -u "$name" cp -f "$configdir/config/rofi/config.rasi" "/home/$name/.config/rofi/config.rasi"
-	chown -R "$name:wheel" "/home/$name/.config/sway" "/home/$name/.config/waybar" "/home/$name/.config/foot" "/home/$name/.config/rofi"
+	sudo -u "$name" cp -f "$configdir/config/swaylock/config" "/home/$name/.config/swaylock/config"
+	chown -R "$name:wheel" "/home/$name/.config/sway" "/home/$name/.config/waybar" "/home/$name/.config/foot" "/home/$name/.config/rofi" "/home/$name/.config/swaylock"
 	rm -rf "$configdir"
 }
 
