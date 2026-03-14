@@ -6,8 +6,7 @@
 
 ### OPTIONS AND VARIABLES ###
 
-# TODO: Add sway-compatible dotfiles repo
-# dotfilesrepo="https://github.com/lukesmithxyz/voidrice.git"
+dotfilesrepo="https://gitlab.com/b.engineer/swoidrice.git"
 progsfile="https://gitlab.com/b.engineer/swarbs/-/raw/master/static/progs.csv"
 aurhelper="yay"
 repobranch="master"
