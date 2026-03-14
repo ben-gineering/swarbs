@@ -201,34 +201,14 @@ vimplugininstall() {
 	sudo -u "$name" nvim -c "PlugInstall|q|q"
 }
 
-installswarbsconfig() {
-	# Install Swarbs default configurations for sway, waybar, foot, rofi, swaylock
-	whiptail --infobox "Installing Swarbs configurations..." 7 60
-	configdir="/tmp/swarbs-config"
-	sudo -u "$name" git -C "$repodir" clone --depth 1 --single-branch \
-		--no-tags -q "https://github.com/LukeSmithxyz/swarbs.git" "$configdir" ||
-		{
-			cd "$configdir" || return 1
-			sudo -u "$name" git pull --force origin master
-		}
-	# Copy config files to user's home
-	sudo -u "$name" cp -f "$configdir/config/sway/config" "/home/$name/.config/sway/config"
-	sudo -u "$name" cp -f "$configdir/config/waybar/config" "/home/$name/.config/waybar/config"
-	sudo -u "$name" cp -f "$configdir/config/waybar/style.css" "/home/$name/.config/waybar/style.css"
-	sudo -u "$name" cp -f "$configdir/config/foot/foot.ini" "/home/$name/.config/foot/foot.ini"
-	sudo -u "$name" cp -f "$configdir/config/rofi/config.rasi" "/home/$name/.config/rofi/config.rasi"
-	sudo -u "$name" cp -f "$configdir/config/swaylock/config" "/home/$name/.config/swaylock/config"
-	sudo -u "$name" cp -f "$configdir/config/firefox/swarbs.js" "/home/$name/.config/firefox/swarbs.js"
-	chown -R "$name:wheel" "/home/$name/.config/sway" "/home/$name/.config/waybar" "/home/$name/.config/foot" "/home/$name/.config/rofi" "/home/$name/.config/swaylock" "/home/$name/.config/firefox"
-	rm -rf "$configdir"
-}
+
 
 makeuserjs(){
 	# Get the Arkenfox user.js and prepare it.
 	arkenfox="$pdir/arkenfox.js"
 	overrides="$pdir/user-overrides.js"
 	userjs="$pdir/user.js"
-	ln -fs "/home/$name/.config/firefox/swarbs.js" "$overrides"
+	ln -fs "/home/$name/.config/firefox/larbs.js" "$overrides"
 	[ ! -f "$arkenfox" ] && curl -sL "https://raw.githubusercontent.com/arkenfox/user.js/master/user.js" > "$arkenfox"
 	cat "$arkenfox" "$overrides" > "$userjs"
 	chown "$name:wheel" "$arkenfox" "$userjs"
