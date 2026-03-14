@@ -2,6 +2,9 @@
 
 A fork of LARBS (Luke's Auto-Rice Bootstrapping Scripts) converted from X11/dwm to Wayland/sway.
 
+**Dotfiles are now provided by [swoidrice](https://gitlab.com/b.engineer/swoidrice)** - a complete
+Wayland/Sway dotfiles repository with Gruvbox theming, Firefox browser, and comprehensive tool configurations.
+
 ## Installation:
 
 On an Arch-based distribution as root, run the following:
@@ -50,7 +53,7 @@ The main components include:
 - **lf**: Terminal file manager
 - **mpd/ncmpcpp**: Music player
 - **newsboat**: RSS reader
-- **LibreWolf**: Privacy-focused web browser
+- **Firefox**: Privacy-focused web browser with Arkenfox user.js integration
 
 ## Customization
 
@@ -82,7 +85,7 @@ Swarbs uses dwm-like keybindings for familiarity:
 - `$mod+Return`: Open terminal (foot)
 - `$mod+d`: Open launcher (rofi)
 - `$mod+j`: Open file manager (lf)
-- `$mod+w`: Open browser (librewolf)
+- `$mod+w`: Open browser (firefox)
 - `$mod+Shift+q`: Kill window
 - `$mod+h/j/k/l`: Navigate windows
 - `$mod+Shift+h/j/k/l`: Move windows
@@ -111,13 +114,16 @@ After installation:
 
 ## Configuration Files
 
-All configurations are installed to `~/.config/`:
+All configurations are provided by [swoidrice](https://gitlab.com/b.engineer/swoidrice) and installed to `~/.config/`:
 - `sway/config`: Sway window manager configuration
 - `waybar/config`: Waybar status bar configuration
-- `waybar/style.css`: Waybar styling
+- `waybar/style.css`: Waybar styling (Gruvbox theme)
 - `foot/foot.ini`: Foot terminal configuration
 - `rofi/config.rasi`: Rofi launcher configuration
 - `swaylock/config`: Swaylock screen locker configuration
+- `firefox/larbs.js`: Firefox privacy and security settings
+
+For a complete list of configurations, see the [swoidrice repository](https://gitlab.com/b.engineer/swoidrice).
 
 ## Requirements
 
@@ -133,4 +139,5 @@ GNU GPLv3 (same as LARBS)
 
 - Original LARBS by Luke Smith <luke@lukesmith.xyz>
 - Sway by Drew DeVault
+- swoidrice dotfiles repository
 - All the amazing open-source contributors
