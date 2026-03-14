@@ -3,6 +3,7 @@
 # Swarbs - Sway Auto Rice Bootstrapping Scripts
 # A Wayland/sway conversion of LARBS
 # License: GNU GPLv3
+# Dotfiles: swoidrice (https://gitlab.com/b.engineer/swoidrice)
 
 ### OPTIONS AND VARIABLES ###
 
