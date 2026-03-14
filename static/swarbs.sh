@@ -287,23 +287,12 @@ installationloop
 putgitrepo "$dotfilesrepo" "/home/$name" "$repobranch"
 rm -rf "/home/$name/.git/" "/home/$name/README.md" "/home/$name/LICENSE" "/home/$name/FUNDING.yml"
 
-# Install default sway, waybar, foot, and rofi configs
-whiptail --infobox "Installing default Swarbs configurations..." 7 60
-sudo -u "$name" mkdir -p "/home/$name/.config/sway"
-sudo -u "$name" mkdir -p "/home/$name/.config/waybar"
-sudo -u "$name" mkdir -p "/home/$name/.config/foot"
-sudo -u "$name" mkdir -p "/home/$name/.config/rofi"
-# Config files will be installed from the swarbs repo after finalizing
-
 # Write urls for newsboat if it doesn't already exist
 [ -s "/home/$name/.config/newsboat/urls" ] ||
 	echo "$rssurls" | sudo -u "$name" tee "/home/$name/.config/newsboat/urls" >/dev/null
 
 # Install vim plugins if not alread present.
 [ ! -f "/home/$name/.config/nvim/autoload/plug.vim" ] && vimplugininstall
-
-# Install Swarbs configurations (sway, waybar, foot, rofi)
-installswarbsconfig
 
 # Most important command! Get rid of the beep!
 rmmod pcspkr
