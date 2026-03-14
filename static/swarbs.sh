@@ -355,23 +355,23 @@ dbus-uuidgen >/var/lib/dbus/machine-id
 # TODO: Configure sway input settings (touchpad, tapping, etc.)
 # X11 libinput config removed - sway handles input configuration separately
 
-# All this below to get Librewolf installed with add-ons and non-bad settings.
+# All this below to get Firefox installed with add-ons and non-bad settings.
 
 whiptail --infobox "Setting browser privacy settings and add-ons..." 7 60
 
-browserdir="/home/$name/.librewolf"
+browserdir="/home/$name/.mozilla/firefox"
 profilesini="$browserdir/profiles.ini"
 
-# Start librewolf headless so it generates a profile. Then get that profile in a variable.
-sudo -u "$name" librewolf --headless >/dev/null 2>&1 &
+# Start firefox headless so it generates a profile. Then get that profile in a variable.
+sudo -u "$name" firefox --headless >/dev/null 2>&1 &
 sleep 1
 profile="$(sed -n "/Default=.*.default-default/ s/.*=//p" "$profilesini")"
 pdir="$browserdir/$profile"
 
 [ -d "$pdir" ] && makeuserjs
 
-# Kill the now unnecessary librewolf instance.
-pkill -u "$name" librewolf
+# Kill the now unnecessary firefox instance.
+pkill -u "$name" firefox
 
 # Allow wheel users to sudo with password and allow several system commands
 # (like `shutdown` to run without password).

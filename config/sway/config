@@ -5,7 +5,7 @@ set $mod Mod4
 
 # Use Wayland-native terminal (foot)
 set $terminal foot
-set $browser librewolf
+set $browser firefox
 set $filemanager lf
 set $launcher rofi -show drun -show-icons
 

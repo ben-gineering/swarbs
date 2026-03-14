@@ -1,5 +1,5 @@
-// Swarbs LibreWolf user overrides
-// This file is symlinked to the LibreWolf profile for Arkenfox user.js integration
+// Swarbs Firefox user overrides
+// This file is symlinked to the Firefox profile for Arkenfox user.js integration
 
 // Privacy and security overrides for Swarbs
 user_pref("privacy.resistFingerprinting", true);
