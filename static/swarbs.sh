@@ -303,10 +303,9 @@ $aurhelper -Y --save --devel
 # and all build dependencies are installed.
 installationloop
 
-# Install default sway configurations
-# TODO: Install sway dotfiles after finalizing config
-# putgitrepo "$dotfilesrepo" "/home/$name" "$repobranch"
-# rm -rf "/home/$name/.git/" "/home/$name/README.md" "/home/$name/LICENSE" "/home/$name/FUNDING.yml"
+# Install default sway configurations from swoidrice
+putgitrepo "$dotfilesrepo" "/home/$name" "$repobranch"
+rm -rf "/home/$name/.git/" "/home/$name/README.md" "/home/$name/LICENSE" "/home/$name/FUNDING.yml"
 
 # Install default sway, waybar, foot, and rofi configs
 whiptail --infobox "Installing default Swarbs configurations..." 7 60
