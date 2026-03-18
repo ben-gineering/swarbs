@@ -30,7 +30,7 @@ with a fully configured diving-board for work or more customization.
 | Component | LARBS (X11) | Swarbs (Wayland) |
 |-----------|-------------|------------------|
 | Window Manager | dwm | sway |
-| Terminal | st | foot |
+| Terminal | st | alacritty |
 | Launcher | dmenu | rofi |
 | Status Bar | dwmblocks | waybar |
 | Lock Screen | slock | swaylock |
@@ -43,7 +43,7 @@ By default, Swarbs installs programs listed in [static/progs.csv](static/progs.c
 
 The main components include:
 - **sway**: Wayland compositor (window manager)
-- **foot**: Fast Wayland-native terminal emulator
+- **alacritty**: Fast, GPU-accelerated terminal emulator
 - **rofi**: Application launcher and window switcher
 - **waybar**: Modular status bar
 - **swaylock**: Screen locker
@@ -82,7 +82,7 @@ the git repository, and the third column is a description.
 Swarbs uses dwm-like keybindings for familiarity:
 
 - `$mod` (Super/Windows key): Main modifier
-- `$mod+Return`: Open terminal (foot)
+- `$mod+Return`: Open terminal (alacritty)
 - `$mod+d`: Open launcher (rofi)
 - `$mod+j`: Open file manager (lf)
 - `$mod+w`: Open browser (firefox)
@@ -118,7 +118,7 @@ All configurations are provided by [swoidrice](https://gitlab.com/b.engineer/swo
 - `sway/config`: Sway window manager configuration
 - `waybar/config`: Waybar status bar configuration
 - `waybar/style.css`: Waybar styling (Gruvbox theme)
-- `foot/foot.ini`: Foot terminal configuration
+- `alacritty/alacritty.toml`: Alacritty terminal configuration
 - `rofi/config.rasi`: Rofi launcher configuration
 - `swaylock/config`: Swaylock screen locker configuration
 - `firefox/larbs.js`: Firefox privacy and security settings

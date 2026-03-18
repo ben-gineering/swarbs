@@ -7,7 +7,7 @@
 ,xorg-xwayland,"provides X11 application compatibility on Wayland."
 ,waybar,"is the modular status bar for Wayland."
 ,rofi,"is an application launcher and switcher."
-,foot,"is a fast Wayland-native terminal emulator."
+,alacritty,"is a fast, cross-platform, GPU-accelerated terminal emulator."
 ,wl-clipboard,"provides clipboard utilities for Wayland."
 ,grim,"captures screenshots on Wayland."
 ,slurp,"selects regions for screenshots."
